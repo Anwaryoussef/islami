@@ -33,20 +33,14 @@ class _HadethTabState extends State<HadethTab> {
           child: Column(
             children: [
               Divider(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                thickness: 2,
+                color: Color(0xFFB7935F),thickness: 2,
               ),
               Text(
                 AppLocalizations.of(context)!.hadethName,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Divider(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                thickness: 2,
+                color: Color(0xFFB7935F),thickness: 2,
               ),
               Expanded(
                 child: hadethModels == 0
@@ -59,10 +53,7 @@ class _HadethTabState extends State<HadethTab> {
                         itemBuilder: (context, index) =>
                             HadethItem(hadeth: hadethModels[index]),
                         separatorBuilder: (context, index) => Divider(
-                          color: provider.appTheme == ThemeMode.light
-                              ? MyThemeData.goldColor
-                              : MyThemeData.yellowColor,
-                          thickness: 2,
+                          color: Color(0xFFB7935F),thickness: 2,
                           indent: MediaQuery.of(context).size.width * .15,
                           endIndent: MediaQuery.of(context).size.width * .15,
                         ),

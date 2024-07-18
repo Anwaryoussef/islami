@@ -62,9 +62,7 @@ class _TasbehTabState extends State<TasbehTab> {
             child: Text(
               AppLocalizations.of(context)!.numberTasbeh,
               style: TextStyle(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.darkColor
-                    : MyThemeData.whiteColor,
+                color: Color(0xFFB7935F),
                 fontSize: 25,
                 fontWeight: FontWeight.w500,
               ),
@@ -76,18 +74,14 @@ class _TasbehTabState extends State<TasbehTab> {
           Container(
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-              color: provider.appTheme == ThemeMode.light
-                  ? MyThemeData.goldColor
-                  : MyThemeData.darkColor,
+              color: Color(0xFFB7935F),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
               '$counter',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.darkColor
-                    : MyThemeData.whiteColor,
+                color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -99,9 +93,7 @@ class _TasbehTabState extends State<TasbehTab> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             decoration: BoxDecoration(
-              color: provider.appTheme == ThemeMode.light
-                  ? MyThemeData.goldColor
-                  : MyThemeData.yellowColor,
+              color: Color(0xFFB7935F),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(

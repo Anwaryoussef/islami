@@ -45,9 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
-              canvasColor: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                  : MyThemeData.darkColor,
+              canvasColor: Color(0xFFB7935F)
             ),
             child: BottomNavigationBar(
               currentIndex: currentIndex,

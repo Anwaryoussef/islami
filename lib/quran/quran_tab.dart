@@ -140,30 +140,25 @@ class QuranTab extends StatelessWidget {
           child: Column(
             children: [
               Divider(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                thickness: 2,
+
+                color: Color(0xFFB7935F),thickness: 2,
+
               ),
               Text(
                 AppLocalizations.of(context)!.suraName,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Divider(
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                thickness: 2,
+                color: Color(0xFFB7935F),thickness: 2,
+
               ),
               Expanded(
                 child: ListView.separated(
                   itemBuilder: (context, index) =>
                       SuraItem(text: suraName[index], index: index),
                   separatorBuilder: (context, index) => Divider(
-                    color: provider.appTheme == ThemeMode.light
-                        ? MyThemeData.goldColor
-                        : MyThemeData.yellowColor,
-                    thickness: 2,
+                    color: Color(0xFFB7935F),thickness: 2,
+
                     indent: MediaQuery.of(context).size.width * .15,
                     endIndent: MediaQuery.of(context).size.width * .15,
                   ),

@@ -25,11 +25,9 @@ class _RadioItemState extends State<RadioItem> {
     return Column(
       children: [
         Text(
-          widget.radios.name ?? '',
+           'اذاعة القرأن الكريم',
           style: TextStyle(
-            color: provider.appTheme == ThemeMode.light
-                ? MyThemeData.blackColor
-                : MyThemeData.whiteColor,
+            color: Colors.black,
             fontSize: 25,
             fontWeight: FontWeight.w500,
           ),
@@ -43,11 +41,9 @@ class _RadioItemState extends State<RadioItem> {
             IconButton(
               onPressed: play,
               icon: Icon(
-                Icons.play_circle_outline_outlined,
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                size: 40,
+                Icons.skip_previous,
+                color:  Color(0xFFB7935F)
+
               ),
             ),
             const SizedBox(
@@ -56,11 +52,23 @@ class _RadioItemState extends State<RadioItem> {
             IconButton(
               onPressed: pause,
               icon: Icon(
-                Icons.pause_circle_outline_outlined,
-                color: provider.appTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.yellowColor,
-                size: 40,
+                  Icons.play_arrow_sharp,
+                  color: Color(0xFFB7935F)
+
+
+              ),
+            ),
+
+            const SizedBox(
+              width: 8,
+            ),
+            IconButton(
+              onPressed: pause,
+              icon: Icon(
+                Icons.skip_next,
+                color: Color(0xFFB7935F)
+
+
               ),
             ),
           ],
