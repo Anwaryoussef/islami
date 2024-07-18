@@ -84,7 +84,7 @@ class _RadioTabState extends State<RadioTab> {
 }
 
 Future<RadiosResponse> getRadios() async {
-  //https://mp3quran.net/api/v3/radios
+
   String baseUrl = 'mp3quran.net';
   try {
     var url = Uri.https(baseUrl, '/api/v3/radios');

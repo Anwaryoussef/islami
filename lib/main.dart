@@ -1,78 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:islami_anwar/providers/provider.dart';
+import 'package:islami_anwar/quran/sura_details.dart';
+
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'hadeth/hadeth_details.dart';
+import 'home/home.dart';
+import 'my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => AppConfigProvider(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  late AppConfigProvider provider;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
+    getSharedPref();
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      routes: {
+        HomeScreen.Route_Name: (context) => HomeScreen(),
+        SuraDetails.Route_Name: (context) => SuraDetails(),
+        HadethDetails.Route_Name: (context) => HadethDetails(),
+      },
+      initialRoute: HomeScreen.Route_Name,
+      theme: MyThemeData.lightMode,
+      darkTheme: MyThemeData.darkMode,
+      themeMode: provider.appTheme,
+      locale: Locale(provider.appLanguage),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+  void getSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    String language = prefs.getString('lang') ?? 'en';
+    provider.appLanguage = language;
+    if (prefs.getString('theme') == 'dark') {
+      provider.appTheme = ThemeMode.dark;
+    } else {
+      provider.appTheme = ThemeMode.light;
+    }
   }
 }
